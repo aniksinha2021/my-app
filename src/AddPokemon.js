@@ -4,43 +4,47 @@ import { InputGroup,Container,Row,Col,FormControl,Button } from 'react-bootstrap
 
 const AddPokemon = () =>
 {
- //const [isLoading, setLoading] = useState(true);
- //const [pokemon, setPokemon] = useState();
- //const [pokemonStats, setPokemonStats] = useState();
+    const [pokeID, setPokeID] = useState(0);
 
-// useEffect(() => {
-//   console.log(pokeID)
-//   //axios.get("https://pokeapi.co/api/v2/pokemon/" + pokeID).then(response => {
-//     //console.log(response.data.types);
-//     setPokemon(response.data);
-//     setPokemonType(response.data.types);
-//     setPokemonStats(response.data.stats);
-//     setLoading(false);
-//   });
-// },[]);
+    const AddP = () => { console.log('Adding pokemon'); console.log(pokeID);
 
-// if (isLoading) {
-//   return <div className="App">Loading...</div>;
-// }
+        if(pokeID!==0)
+        {
+            console.log('Add to Pokemon list')
+            let listOfPokemons=JSON.parse(localStorage.getItem('mypokemons'));
 
-return (
-    <Container fluid>
-        <Row>
-            <Col>
-            <InputGroup>
-                <FormControl
-                    placeholder="Add Pokemon"
-                 />
-                 <Button variant="primary">
-                     Add
-                 </Button>
-            </InputGroup>
-            </Col>
-        </Row>
-    </Container>
-  
-  
-);
+            console.log(typeof(listOfPokemons));
+            listOfPokemons.push({id:parseInt(pokeID)})
+            localStorage.setItem('mypokemons',JSON.stringify(listOfPokemons));
+        }
+        else
+        {
+            console.log('cannot add to Pokemon list')
+        }
+}
+    const handleChange = (event) => { 
+                console.log('text changed')
+                console.log(event.target.value);
+                setPokeID(event.target.value);
+            }
+
+    //useEffect(() =>{})
+    return (
+        <Container fluid>
+            <Row>
+                <Col>
+                <InputGroup>
+                    <FormControl value={pokeID} key='kAddPokemonText' id='idAddPokemonText' onChange={handleChange}
+                        placeholder="Add Pokemon"
+                    />
+                    <Button key='kAddPokemonButton' variant="primary" onClick={AddP}>
+                        Add
+                    </Button>
+                </InputGroup>
+                </Col>
+            </Row>
+        </Container>
+    );
 
 
 }
