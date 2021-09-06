@@ -10,7 +10,7 @@ const Pokemon = ({pokeID}) =>
  const [pokemonStats, setPokemonStats] = useState();
 
 useEffect(() => {
-  console.log(pokeID)
+  
   axios.get("https://pokeapi.co/api/v2/pokemon/" + pokeID).then(response => {
     //console.log(response.data.types);
     setPokemon(response.data);
@@ -21,18 +21,20 @@ useEffect(() => {
 },[]);
 
 if (isLoading) {
-  return <div className="App">Loading...</div>;
+  return <tr><td><span key={'span-loading-'} className="App">Loading...</span></td></tr>;
 }
 
 return (
   <tr key={pokeID}>
-    <td key={pokemon.name}> <span style={{fontSize:18}}><b>{pokemon.name}</b></span>
+    <td key={pokemon.name}> <span key={'span-' + pokemon.name}style={{fontSize:18}}><b>{pokemon.name}</b>
+      [{pokemon.id}]
+    </span>
     <br></br>
-    <label>Height:{Math.round(pokemon.height*0.33*100)/100} ' </label>
+    <label key={'lblHeight' + pokemon.name}>Height:{Math.round(pokemon.height*0.33*100)/100} ' </label>
     <br></br>
-    <label>Weight:{Math.round(pokemon.weight*0.22*100)/100} lb </label>
+    <label key={'lblWeight' + pokemon.name}>Weight:{Math.round(pokemon.weight*0.22*100)/100} lb </label>
     <br></br>
-    {pokemonType.map(pTy =>(<span>
+    {pokemonType.map(pTy =>(<span key={'span2-'+ pokemon.name + '-' + pTy.type.name } >
         {pTy.type.name==='water' && <button style={{background:"blue",color:"white"}}> {pTy.type.name}</button>}
         {pTy.type.name==='ground' && <button style={{background:"brown",color:"white"}}> {pTy.type.name}</button>}
         {pTy.type.name==='dragon' && <button style={{background:"darkblue",color:"white"}}> {pTy.type.name}</button>}
@@ -58,22 +60,14 @@ return (
     <td ><img alt={pokemon.name} src={pokemon.sprites.front_default} />
          
     </td>
-    {/* <td > {pokemon.types.map(pt => (<button style={{color:"red"}}>{pt.type.name}</button>))}</td>  */}
-    {/* <td>
-     
-    </td> */}
     <td >
-      {pokemonStats.map(pStats =>(<span>{pStats.stat.name==='hp' && <ProgressBar striped variant="success" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " + pStats.base_stat}/> } </span>))}
-      {pokemonStats.map(pStats =>(<span>{pStats.stat.name==='attack' && <ProgressBar striped variant="danger" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " + pStats.base_stat}/> } </span>))}
-      {pokemonStats.map(pStats =>(<span>{pStats.stat.name==='defense' && <ProgressBar striped variant="warning" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " + pStats.base_stat}/> } </span>))}
-      {pokemonStats.map(pStats =>(<span>{pStats.stat.name==='special-attack' && <ProgressBar striped variant="info" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " +pStats.base_stat}/> } </span>))}
-      {pokemonStats.map(pStats =>(<span>{pStats.stat.name==='special-defense' && <ProgressBar striped variant="success" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " +pStats.base_stat}/> } </span>))}
-      {pokemonStats.map(pStats =>(<span>{pStats.stat.name==='speed' && <ProgressBar striped variant="danger" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " +pStats.base_stat}/> } </span>))}
+      {pokemonStats.map(pStats =>(<span key={'span3-' + pokemon.name +'-'+ pStats.stat.name}>{pStats.stat.name==='hp' && <ProgressBar striped variant="success" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " + pStats.base_stat}/> } </span>))}
+      {pokemonStats.map(pStats =>(<span key={'span3-' + pokemon.name +'-'+ pStats.stat.name}>{pStats.stat.name==='attack' && <ProgressBar striped variant="danger" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " + pStats.base_stat}/> } </span>))}
+      {pokemonStats.map(pStats =>(<span key={'span3-' + pokemon.name +'-'+ pStats.stat.name}>{pStats.stat.name==='defense' && <ProgressBar striped variant="warning" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " + pStats.base_stat}/> } </span>))}
+      {pokemonStats.map(pStats =>(<span key={'span3-' + pokemon.name +'-'+ pStats.stat.name}>{pStats.stat.name==='special-attack' && <ProgressBar striped variant="info" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " +pStats.base_stat}/> } </span>))}
+      {pokemonStats.map(pStats =>(<span key={'span3-' + pokemon.name +'-'+ pStats.stat.name}>{pStats.stat.name==='special-defense' && <ProgressBar striped variant="success" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " +pStats.base_stat}/> } </span>))}
+      {pokemonStats.map(pStats =>(<span key={'span3-' + pokemon.name +'-'+ pStats.stat.name}>{pStats.stat.name==='speed' && <ProgressBar striped variant="danger" now={pStats.base_stat} min='0' max='255' label={pStats.stat.name + " " +pStats.base_stat}/> } </span>))}
     </td>
-    
-    {/* <td>
-      {pokemonStats.map(pStats =>(<span><label>{pStats.stat.name}</label>  <label>{pStats.base_stat}</label> </span>))}
-    </td> */}
   </tr>
 );
 
