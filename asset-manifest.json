@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/aniksinha2021/my-app/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/aniksinha2021/my-app/static/js/main.819a8bed.chunk.js",
+    "main.js.map": "/aniksinha2021/my-app/static/js/main.819a8bed.chunk.js.map",
+    "runtime-main.js": "/aniksinha2021/my-app/static/js/runtime-main.ab837a2f.js",
+    "runtime-main.js.map": "/aniksinha2021/my-app/static/js/runtime-main.ab837a2f.js.map",
+    "static/css/2.614fbcaa.chunk.css": "/aniksinha2021/my-app/static/css/2.614fbcaa.chunk.css",
+    "static/js/2.9d4f5746.chunk.js": "/aniksinha2021/my-app/static/js/2.9d4f5746.chunk.js",
+    "static/js/2.9d4f5746.chunk.js.map": "/aniksinha2021/my-app/static/js/2.9d4f5746.chunk.js.map",
+    "static/js/3.f3ba5ccf.chunk.js": "/aniksinha2021/my-app/static/js/3.f3ba5ccf.chunk.js",
+    "static/js/3.f3ba5ccf.chunk.js.map": "/aniksinha2021/my-app/static/js/3.f3ba5ccf.chunk.js.map",
+    "index.html": "/aniksinha2021/my-app/index.html",
+    "static/css/2.614fbcaa.chunk.css.map": "/aniksinha2021/my-app/static/css/2.614fbcaa.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/aniksinha2021/my-app/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.9d4f5746.chunk.js.LICENSE.txt": "/aniksinha2021/my-app/static/js/2.9d4f5746.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ab837a2f.js",
+    "static/css/2.614fbcaa.chunk.css",
+    "static/js/2.9d4f5746.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.819a8bed.chunk.js"
+  ]
+}
